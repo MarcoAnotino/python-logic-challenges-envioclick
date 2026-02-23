@@ -1,4 +1,18 @@
 def es_separador(caracter: str) -> bool:
+    """
+        Determina si un carácter se considera separador de palabras.
+
+        Un separador es cualquier carácter que delimita palabras para validar
+        coincidencias completas (no subcadenas). Se consideran separadores:
+        - Espacio (" ").
+        - Caracteres de control tipo espacio/tabulación/salto de línea (códigos 9 a 13).
+        - Signos de puntuación: ., , ; :
+        - Signos de interrogación y exclamación: ¡ ! ¿ ?
+        - Paréntesis, comillas y guion: ( ) " ' -
+
+        :param caracter: Carácter individual a evaluar.
+        :return: True si es separador; False en caso contrario.
+    """
     codigo = ord(caracter)
 
     if caracter == " ":
@@ -20,6 +34,20 @@ def es_separador(caracter: str) -> bool:
 
 
 def contar_ocurrencias(parrafo: str, texto:str) -> int:
+    """
+        Cuenta cuántas veces aparece una palabra/expresión dentro de un párrafo,
+        comparando carácter por carácter y validando límites de palabra.
+
+        Reglas:
+        - La comparación es insensible a mayúsculas/minúsculas.
+        - Solo cuenta coincidencias completas: el match debe estar delimitado por
+        separadores (inicio/fin de cadena o un carácter considerado separador).
+        - No usa funciones facilitadoras como 'in', 'find', 'index', regex, etc.
+
+        :param parrafo: Texto donde se buscarán las ocurrencias.
+        :param texto: Texto a buscar dentro del párrafo.
+        :return: Número total de ocurrencias válidas encontradas.
+    """
     parrafo_normalizado = parrafo.lower()
     texto_normalizado = texto.lower()
 
