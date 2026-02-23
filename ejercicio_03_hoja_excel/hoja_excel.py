@@ -147,7 +147,6 @@ class HojaExcel:
                 total += self._asegurar_numero(valor)
             col += 1
 
-        print(total)
         return total
 
     def suma_columna(self, columna: int) -> float:
@@ -169,5 +168,4 @@ class HojaExcel:
                 total += self._asegurar_numero(valor)
             fila += 1
 
-        print(total)
         return total

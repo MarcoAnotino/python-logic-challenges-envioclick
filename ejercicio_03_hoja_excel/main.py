@@ -21,10 +21,10 @@ def main() -> None:
     hoja.actualizar(2, 1, 6.5)
 
     print("Suma fila 1:")
-    hoja.suma_fila(1)
+    print(hoja.suma_fila(1))
 
     print("Suma columna 1:")
-    hoja.suma_columna(1)
+    print(hoja.suma_columna(1))
 
 
 if __name__ == "__main__":
