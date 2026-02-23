@@ -6,34 +6,63 @@ Dado un **párrafo** y un **texto**, el programa cuenta cuántas veces aparece e
 
 ### Criterio de conteo
 
-- La búsqueda es **insensible a mayúsculas/minúsculas** (se normaliza con `lower()`).
-- Se cuentan **ocurrencias como palabra completa**, es decir:
-  - Debe existir un **separador** antes y después de la coincidencia (o ser inicio/fin del párrafo).
-  - Separadores considerados: espacio, tabulaciones/saltos de línea, signos de puntuación y algunos símbolos (`. , ; : ¡ ! ¿ ? ( ) " ' -`).
-- No se usan funciones prohibidas para búsqueda como `in`, `find`, `index`, expresiones regulares, etc.  
-  La comparación se realiza carácter por carácter.
+1. Comparación **insensible a mayúsculas/minúsculas**.
+2. Solo se cuentan **coincidencias completas** (no subcadenas).
+3. La coincidencia debe estar delimitada por:
+   - Inicio/fin de la cadena, o
+   - Un carácter separador (espacio, puntuación, etc.).
+
+4. La comparación se realiza carácter por carácter.
 
 ---
 
-## Archivos
+## Arquitectura de la solución
 
-- `ocurrencias.py`: contiene la lógica (`es_separador` y `contar_ocurrencias`).
-- `main.py`: punto de entrada por consola.
-- `test_ocurrencias.py`: pruebas unitarias con `unittest` (módulo estándar de Python).
+### 1. ocurrencias.py
+
+Función principal:
+
+```
+contar_ocurrencias(parrafo, texto)
+```
+
+- Normaliza ambos textos a minúsculas.
+- Recorre el párrafo carácter por carácter.
+- Verifica coincidencia manual.
+- Valida límites de palabra usando:
+  `es_separador(caracter)`
 
 ---
 
-## Requisitos
+## Flujo general
 
-- Python **3.13**
-- No requiere dependencias externas (solo librería estándar).
+1. Recibir `parrafo` y `texto`
+2. Comparar carácter por carácter
+3. Validar límites de palabra
+4. Contar coincidencias válidas
+5. Retornar total
 
 ---
 
 ## Ejecución
 
-Desde la carpeta `ejercicio_01_contar_ocurrencias/`:
+`python3 main.py`
 
-```bash
-python3 main.py
-```
+---
+
+## Pruebas unitarias
+
+`python3 test_ocurrencias.py`
+
+---
+
+## Complejidad
+
+- Tiempo: `O(n × m)`
+- Espacio: `O(1)`
+
+---
+
+## Resultado esperado
+
+Devuelve el número de coincidencias válidas del texto como palabra completa, respetando todas las restricciones del ejercicio.
